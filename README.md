@@ -6,8 +6,6 @@ JobFind is a web application designed to facilitate job searching and networking
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [License](#license)
-- [Contact Information](#contact-information)
 
 
 ## Installation
@@ -30,7 +28,6 @@ To set up the project locally using Docker, follow these steps:
 
 4. Access the application:
    - The web application will be available at `http://localhost:5001`.
-   - The MySQL database will be accessible on port `3307`.
 
 ## Usage
 
@@ -41,13 +38,4 @@ docker-compose down
 ```
 
 This command will stop and remove the containers.
-
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Contact Information
-
-Contact: [Erdison Malko](mailto:erdisonmalko@gmail.com).
 
