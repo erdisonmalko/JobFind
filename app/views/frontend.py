@@ -459,27 +459,23 @@ def register_post():
                 location=req_data.get("location"),
                 password=generate_password_hash(req_data.get("password"))
             )
-        # send email verification and redirect to a preview page, 
-        # where will wait for user to open email, and click the link to get them redirected to home page
-        # *** as of now the logic to send email to users to confirm their emails is not working ****
-        
+
         db.session.add(user)
         db.session.commit()
         # log
-        # current_app.logger.info(f"Registration successful for user: {user.name}")
-        # # return
-        # flash("Registration successful", "success")
-        # return redirect(url_for('frontend.login'))
-        token = generate_token(user.email)
-        confirm_url = url_for("accounts.confirm_email", token=token, _external=True)
-        html = render_template("accounts/confirm_email.html", confirm_url=confirm_url)
-        subject = "Please confirm your email"
-        send_email(user.email, subject, html)
-
-        login_user(user)
-
-        flash("A confirmation email has been sent via email.", "success")
-        return redirect(url_for("accounts.inactive"))
+        current_app.logger.info(f"Registration successful for user: {user.name}")
+        # return
+        flash("Registration successful", "success")
+        return redirect(url_for('frontend.login'))
+        # TO DO: enable email confirmation 
+        # token = generate_token(user.email)
+        # confirm_url = url_for("accounts.confirm_email", token=token, _external=True)
+        # html = render_template("accounts/confirm_email.html", confirm_url=confirm_url)
+        # subject = "Please confirm your email"
+        # send_email(user.email, subject, html)
+        # login_user(user)
+        # flash("A confirmation email has been sent via email.", "success")
+        # return redirect(url_for("accounts.inactive"))
     except Exception as e:
         db.session.rollback()
         current_app.logger.error(f"Registration error: {e}")
